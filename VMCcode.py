@@ -34,17 +34,48 @@ def displayTerminalBalance():
     print("╚═════════════╝")
 
 def startCheck():
+
+    startInput = input("""Do you want to start the purchace? yes/no
+""")
+
     if startInput == "yes":
-        print()
+        displayCodeTerminal()
     elif startInput == "no":
         print("Operation Ended")
     else:
-        print("Invalid input" \
-        "Type a valid answer")
+        print("""Invalid input
+Type a valid answer""")
+
+
+
+def displayCodeTerminal():
+    print("╔═════════════════╗")
+    print("║  SELECT PRODUCT ║")
+    print("║       CODE      ║")
+    print("║                 ║")
+    print("║     >           ║")
+    print("║                 ║")
+    print("╚═════════════════╝")
+
+    print("\033[3A\033[9C", end="")
+    codeInput = input("")
+   
+    if codeInput in products:
+        print("product found")
+        productInfoTerminal()
+    else:
+        print("""product not found
+try again""")
+        displayCodeTerminal()
+
+
+def productInfoTerminal():
+    product = products[displayCodeTerminal]
+    print(product)
+
 
 
 
 displayProducts()
 displayTerminalBalance()
-startInput = input("""Do you want to start the purchace? yes/no
-""")
+startCheck()
